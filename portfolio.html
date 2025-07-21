@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashish Pareta - Full Stack Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .header-info h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-info .subtitle {
+            font-size: 1.2rem;
+            color: #bdc3c7;
+            margin-bottom: 1rem;
+        }
+
+        .header-info .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .contact-info {
+            text-align: right;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-item i {
+            margin-left: 0.5rem;
+            width: 20px;
+            color: #3498db;
+        }
+
+        .contact-item a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        nav {
+            background: #34495e;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-right: 1px solid #2c3e50;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: #3498db;
+        }
+
+        .nav-links li:first-child a {
+            border-left: 1px solid #2c3e50;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+        }
+
+        /* Professional Summary */
+        .summary {
+            background: #f8f9fa;
+        }
+
+        .summary-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .summary-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .key-stats {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .key-stats h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: #3498db;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+
+        .skill-item i {
+            color: #3498db;
+            margin-right: 0.8rem;
+            width: 16px;
+        }
+
+        .skill-name {
+            font-weight: 500;
+        }
+
+        /* Experience */
+        .experience-item {
+            background: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .experience-header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: start;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .company-name {
+            color: #3498db;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .duration {
+            background: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .experience-description {
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .project-header {
+            background: #3498db;
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-duration {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-description {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack h4 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-features h4 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            padding: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .features-list li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        /* Education */
+        .education-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #3498db;
+        }
+
+        .education-item {
+            position: relative;
+            background: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            margin-left: 1rem;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #3498db;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .degree {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .institution {
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-duration {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .grade {
+            font-weight: 600;
+            color: #27ae60;
+        }
+
+        /* Certifications */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .certification-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #e1e8ed;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .cert-badge {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .cert-content {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .cert-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-provider {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .cert-date {
+            color: #7f8c8d;
+        }
+
+        .cert-score {
+            background: #27ae60;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-weight: 500;
+        }
+
+        .cert-highlight {
+            background: #f1c40f;
+            color: #2c3e50;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cert-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .cert-skills span {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .summary-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-header {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .certification-card {
+                flex-direction: column;
+            }
+            
+            .cert-badge {
+                width: 100%;
+                padding: 1rem 0;
+            }
+            
+            .project-card {
+                min-width: 100%;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Print styles */
+        @media print {
+            .nav-links,
+            footer {
+                display: none;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-image">
+                    KP
+                </div>
+                <div class="header-info">
+                    <h1>Kashish Pareta</h1>
+                    <p class="subtitle">Full Stack Developer | MCA Student</p>
+                    <p class="description">Passionate Full Stack Developer with hands-on experience in modern web technologies. Currently pursuing Master's in Computer Applications with exceptional academic performance and practical industry exposure.</p>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        Gwalior, Madhya Pradesh (474003) <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-item">
+                        +91-8878854040 <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-item">
+                        <a href="mailto:kashishpareta56@gmail.com">kashishpareta56@gmail.com</a> <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://www.linkedin.com/in/kashish-pareta-b285162b6" target="_blank">LinkedIn Profile</a> <i class="fab fa-linkedin"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#summary" class="active">Summary</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Professional Summary -->
+    <section id="summary" class="section summary">
+        <div class="container">
+            <h2 class="section-title">Professional Summary</h2>
+            <div class="summary-content">
+                <div class="summary-text">
+                    <p>Dynamic and results-driven Full Stack Developer with practical experience in developing robust web applications using modern technologies. Pecently completed Master's in Computer Applications from Madhav Institute of Technology and Science with an outstanding CGPA of 9.01/10.</p>
+                    <p>Completed a comprehensive internship at DivaishiSoft Development Solutions, where I gained hands-on experience in both frontend and backend development. Proficient in JavaScript, Node.js, MySQL, and responsive web design. Successfully delivered multiple projects including a peer-to-peer skill-sharing platform and railway reservation system.</p>
+                    <p>Strong analytical and problem-solving skills with excellent adaptability and communication abilities. Seeking opportunities to contribute technical expertise and continue professional growth in a challenging development role.</p>
+                </div>
+                <div class="key-stats">
+                    <h3>Key Highlights</h3>
+                    <div class="stat-item">
+                        <span class="stat-label">Current CGPA</span>
+                        <span class="stat-value">9.01/10</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Industry Experience</span>
+                        <span class="stat-value">4+ Months</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Major Projects</span>
+                        <span class="stat-value">3 Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Cloud Computing Score</span>
+                        <span class="stat-value">85%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Top Percentile</span>
+                        <span class="stat-value">Top 5%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fab fa-html5"></i>
+                            <span class="skill-name">HTML</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span class="skill-name">CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js-square"></i>
+                            <span class="skill-name">JavaScript</span>
+                        </div>
+                        <!-- <div class="skill-item">
+                            <i class="fab fa-react"></i>
+                            <span class="skill-name">React.js</span>
+                        </div> -->
+                        <div class="skill-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span class="skill-name">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fab fa-node-js"></i>
+                            <span class="skill-name">Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-server"></i>
+                            <span class="skill-name">Express.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-java"></i>
+                            <span class="skill-name">Core Java</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Database & Technologies</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span class="skill-name">MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span class="skill-name">SQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Professional Skills</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <span class="skill-name">Problem Solving</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-sync"></i>
+                            <span class="skill-name">Adaptability</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-comments"></i>
+                            <span class="skill-name">Communication</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-users"></i>
+                            <span class="skill-name">Team Collaboration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Full Stack Developer Intern</div>
+                        <div class="company-name">DivaishiSoft Development Solutions</div>
+                    </div>
+                    <div class="duration">Jan 2025 – April 2025</div>
+                </div>
+                <div class="experience-description">
+                    Gained comprehensive practical experience in both frontend and backend development as part of a professional development team. Successfully contributed to the development and maintenance of web applications using modern technologies including Node.js and MySQL. Key responsibilities included building responsive user interfaces, developing robust backend functionalities, and collaborating effectively with cross-functional teams to troubleshoot complex technical issues and implement strategic improvements. This experience significantly strengthened my technical skills in full-stack web development and enhanced my problem-solving capabilities in real-world scenarios.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">SkillXchange Platform</div>
+                        <div class="project-duration">January 2025 – April 2025</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Developed a comprehensive peer-to-peer skill-sharing platform enabling users to exchange expertise and services seamlessly. The platform features secure user authentication, intuitive skill listing capabilities, and an efficient request management system for skill exchanges.
+                        </p>
+                        <div class="tech-stack">
+                            <h4>Technologies Used:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Express.js</span>
+                            </div>
+                        </div>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul class="features-list">
+                                <li>Real-time skill exchange platform with live updates</li>
+                                <li>Secure user authentication and profile management</li>
+                                <li>Comprehensive admin dashboard for platform oversight</li>
+                                <li>Fully responsive web design for all devices</li>
+                                <li>Advanced skill listing and matching system</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">Ayurmedico - Online Pharmacy</div>
+                        <div class="project-duration">Sep 2024 – Nov 2024</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Developed a comprehensive MERN stack e-commerce platform for Ayurvedic medicines with user authentication, product catalog, cart functionality, and secure payment integration. Implemented admin dashboard for inventory management and order processing.
+                        </p>
+                        <div class="tech-stack">
+                            <h4>Technologies Used:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">React.js</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Express.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">JWT</span>
+                            </div>
+                        </div>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul class="features-list">
+                                <li>User authentication with JWT and password encryption</li>
+                                <li>Product catalog with search and filtering capabilities</li>
+                                <li>Shopping cart with persistent storage</li>
+                                <li>Admin dashboard for product and order management</li>
+                                <li>Responsive design for all device types</li>
+                                <li>Order tracking and history for users</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title">Online Railway Reservation System</div>
+                        <div class="project-duration">February 2024 – May 2024</div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Built a complete online railway reservation booking platform with intuitive user interfaces for seamless ticket booking and comprehensive reservation management. The system handles complex user data processing and provides robust backend services.
+                        </p>
+                        <div class="tech-stack">
+                            <h4>Technologies Used:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                        </div>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul class="features-list">
+                                <li>Comprehensive online ticket booking system</li>
+                                <li>Advanced reservation management capabilities</li>
+                                <li>Secure user data handling and processing</li>
+                                <li>Responsive user interface design</li>
+                                <li>Robust backend services integration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Educational Background</h2>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <div class="degree">Master in Computer Application (MCA)</div>
+                    <div class="institution">Madhav Institute of Technology and Science</div>
+                    <div class="education-duration">September 2023 – June 2025</div>
+                    <div class="grade">CGPA: 9.01/10</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="degree">Bachelor of Science (B.Sc.)</div>
+                    <div class="institution">Govt. Kamlaraja Girls Post Graduate Autonomous College, Gwalior (M.P.)</div>
+                    <div class="education-duration">August 2020 - June 2023</div>
+                    <div class="grade">Percentage: 71.87%</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="degree">Higher Secondary Education (Class XII)</div>
+                    <div class="institution">J.C. Mills Higher Secondary School, Birla Nagar, Gwalior (M.P.)</div>
+                    <div class="education-duration">April 2019 – July 2020</div>
+                    <div class="grade">Percentage: 71.6%</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="degree">High School Education (Class X)</div>
+                    <div class="institution">Swami Vivekanand CHHS, Gusainpura, Jhansi (U.P.)</div>
+                    <div class="education-duration">April 2017 – April 2018</div>
+                    <div class="grade">Percentage: 89%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="section-title">Certifications & Achievements</h2>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="cert-badge">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="cert-content">
+                        <div class="cert-title">Cloud Computing</div>
+                        <div class="cert-provider">NPTEL Online Certification</div>
+                        <div class="cert-meta">
+                            <span class="cert-date">Completed: June 2024</span>
+                            <span class="cert-score">85%</span>
+                        </div>
+                        <div class="cert-highlight">
+                            <i class="fas fa-trophy"></i> Top 5% Nationwide Ranking
+                        </div>
+                        <div class="cert-skills">
+                            <span>Cloud Architecture</span>
+                            <span>Virtualization</span>
+                            <span>Distributed Systems</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="certification-card">
+                    <div class="cert-badge">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="cert-content">
+                        <div class="cert-title">Blockchain and its Applications</div>
+                        <div class="cert-provider">NPTEL Online Certification</div>
+                        <div class="cert-meta">
+                            <span class="cert-date">Completed: May 2024</span>
+                            <span class="cert-score">64%</span>
+                        </div>
+                        <div class="cert-skills">
+                            <span>Smart Contracts</span>
+                            <span>Cryptography</span>
+                            <span>Decentralized Apps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    &copy; 2025 Kashish Pareta. All Rights Reserved.
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/kashish-pareta-b285162b6" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:kashishpareta56@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
